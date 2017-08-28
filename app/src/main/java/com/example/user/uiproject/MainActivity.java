@@ -16,15 +16,27 @@ package com.example.user.uiproject;
 * limitations under the License.
 */
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.user.uiproject.databinding.ActivityMainBinding;
+import com.example.user.uiproject.utilities.FakeDataUtils;
+
 public class MainActivity extends AppCompatActivity {
+
+    ActivityMainBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        /*set the content view via DataBindingUtil to the approrpriate layout
+          so Instead of: setContentView(R.layout.activity_main);
+          we have:
+        */
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        BoardingPassInfo info = FakeDataUtils.generateFakeBoardingPassInfo();
     }
 
 }
